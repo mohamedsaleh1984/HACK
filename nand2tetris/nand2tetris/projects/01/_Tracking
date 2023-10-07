@@ -8,10 +8,11 @@ Or16Way
 Not16
 Mux
 DMux
+Mux16
+Mux4Way16
 ------------
 
 DMux4Way
 DMux8Way
 Mux4Way
 Mux8Way
-Mux16
