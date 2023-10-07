@@ -1,0 +1,22 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/01/Or3.hdl
+
+ /**
+ * Or gate:
+ * out = 0 if (a == 0 or b == 0 or c == 0)
+ *       1 otherwise
+ */
+
+CHIP Or3 {
+    IN a, b, c;
+    OUT out;
+
+    PARTS:
+    Or (a=a,b=c,out=out);
+}
+/*
+Or (a= a, b= b, out= aORb)
+    Or (a=c, b=aOrb, out=out);
+*/
