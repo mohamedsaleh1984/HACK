@@ -1,7 +1,7 @@
 |Chip|Status|
 |----|-----|
-|And16||
-|ALU||
-|FullAdder||
-|HalfAdder||
-|Inc16||
+|HalfAdder|WIP|
+|FullAdder|WIP|
+|And16|WIP|
+|Inc16|WIP|
+|ALU|WIP|
