@@ -1,0 +1,17 @@
+|Chip|Status|
+|----|-----|
+|And|Done|
+|And16|Done|
+|DMux|Done|
+|DMux4Way|Done|
+|DMux8Way|WIP|
+|Mux|Done|
+|Mux4Way16|Done|
+|Mux8Way16|WIP|
+|Mux16|Done|
+|Not|Done|
+|Not16|Done|
+|Or|Done|
+|Or8Way|Done|
+|Or16|Done|
+|Xor|Done|
