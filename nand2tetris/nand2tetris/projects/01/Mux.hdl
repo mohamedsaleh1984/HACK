@@ -17,6 +17,7 @@ CHIP Mux {
     Not (in=a, out= nota);
     Not (in=b, out= notb);
     Not (in=sel, out= notsel);
+    
     Nand (a= notsel, b = a,out=s1);
     Nand (a= sel, b = b,out=s2);
     Nand (a= s1, b = s2,out=out);
