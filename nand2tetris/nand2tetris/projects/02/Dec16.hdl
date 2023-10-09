@@ -1,4 +1,3 @@
-
 /**
  * Dec16
  * Decrement in by 1
@@ -11,5 +10,5 @@ CHIP Dec16 {
 
     PARTS:
     Neg16(in=1,out=negone);
-    Add16(a=in,b=negone,out=out)
+    Add16(a=in,b=negone,out=out);
 }
