@@ -1,0 +1,14 @@
+
+/**
+ * Negate input a.
+ * The most significant carry bit is ignored.
+ */
+
+CHIP Neg16 {
+    IN in[16];
+    OUT out[16];
+
+    PARTS:
+    Not16(in=in,out=notinoutput);
+    Inc16(in=notinoutput, out = out);
+}
