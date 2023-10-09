@@ -2,6 +2,7 @@
  * Dec16
  * Decrement in by 1
  * Simply Adding -1 to given number in
+*  Add16(a=in,b[0]=true,out=out);
  */
 
 CHIP Dec16 {
@@ -9,6 +10,6 @@ CHIP Dec16 {
     OUT out[16];
 
     PARTS:
-    Neg16(in=1,out=negone);
+    Neg16(in[0]=true,out=negone);
     Add16(a=in,b=negone,out=out);
 }
