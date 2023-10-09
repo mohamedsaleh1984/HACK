@@ -9,6 +9,6 @@ CHIP Neg16 {
     OUT out[16];
 
     PARTS:
-    Not16(in=in,out=notinoutput);
-    Inc16(in=notinoutput, out = out);
+    Not16(in=in,out=notinoutput);//one's complement.
+    Inc16(in=notinoutput, out = out);//added 1 to get two's complement.
 }
