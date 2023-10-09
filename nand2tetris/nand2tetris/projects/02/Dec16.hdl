@@ -1,0 +1,15 @@
+
+/**
+ * Dec16
+ * Decrement in by 1
+ * Simply Adding -1 to given number in
+ */
+
+CHIP Dec16 {
+    IN in[16];
+    OUT out[16];
+
+    PARTS:
+    Neg16(in=1,out=negone);
+    Add16(a=in,b=negone,out=out)
+}
