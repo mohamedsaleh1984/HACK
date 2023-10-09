@@ -2,6 +2,6 @@
 |----|-----|
 |HalfAdder|Done|
 |FullAdder|Done|
-|And16|WIP|
-|Inc16|WIP|
+|And16|Done|
+|Inc16|Done|
 |ALU|WIP|
