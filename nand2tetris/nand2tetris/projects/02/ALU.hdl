@@ -42,57 +42,32 @@ CHIP ALU {
         ng; // 1 if (out < 0),  0 otherwise
 
     PARTS:
+        //ZX, NX
+        Mux16(a=x, b[0..15]=false, sel=zx, out=zxOutput);
+        Not16(in=zxOutput, out=notX);
+        Mux16(a=zxOutput, b=notX, sel=nx, out=readyX);
 
-    //0:Operation 0
+        //ZY,NY
+        Mux16(a=y, b[0..15]=false, sel=zy, out=zyOutput);
+        Not16(in=zyOutput, out=notY);
+        Mux16(a=zyOutput, b=notY, sel=ny, out=readY);
 
-    //1:Operation 1
-    
-    //2:Operation -1
+        //f function
+        Add16(a=readyX, b=readY, out=XPlusY);
+        And16(a=readyX, b=readY, out=XAndY);
+        Mux16(a=XAndY, b=XPlusY, sel=f, out=Fxy);
 
-    //3:Operation x       => Or16
-    Or16(a=1,b=x,out= s3);
-
-    //4:Operation y       => Or16
-    Or16(a=1,b=y,out= s4);
-    
-    //5:Operation !x      => Not16
-    Not16(in=x, out= s5);
-
-    //6:Operation !y      => Not16
-    Not16(in=y, out = s6);
-
-    //7:Operation -x      => Neg16(x)
-    Neg16(in=x,out=s7);
-
-    //8:Operation -y      => Neg16(y)
-    Neg16(in=y, out=s8);
-
-    //9:Operation x+1     => Inc16
-    Inc16(in=x, out = s9);
-
-    //10:Operation y+1     => Inc16
-    Inc16(in=y,out=s10);
-
-    //11:Operation x-1     => Add16(X, Neg16(1))
-    Dec16(in=x,out=s11);
-
-    //12:Operation y-1     => Add16(Y, Neg16(1))
-    Dec16(in=y, out= s12);
-
-    //13:Operation x+y     => Add16(X,Y)
-    Add16(a=x,b=y, out= s13);
-    
-    //14:Operatoin x-y     => Add16(X, Neg16(y))
-    Neg16(in= y, out= negy);
-    Add16(a= x, b = negy, out=s14);
-
-    //15:Operation y-x     => Add16(y,Neg16(x))
-    Neg16(in= x, out= negx);
-    Add16(a= y, b = negx, out=s15);
-    
-    //16:Operation x&Y     => And16(X,Y)
-    And16(a=x,b=y,out= s17)
-    
-    //17:Operation x|Y     => Or16(x,y)
-    Or16(a=x,b=y,out=s18)
+        //Negation
+        Not16(in=Fxy,out=notFxy);
+        Mux16(a=Fxy, b=notFxy, sel=no,
+                out=out,
+                out[15]=ng,
+                out[0..7]=zrLow,
+                out[8..15]=zrHigh);
+       //ZR
+       Or8Way(in= zrLow,out=rightSide);
+       Or8Way(in= zrHigh,out=leftSide);
+       Or(a=rightSide, b=leftSide,out=orResult);
+       Not(in=orResult,out =zr );
+       
 }
